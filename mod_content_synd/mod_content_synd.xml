@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5.0" client="site" method="upgrade">
+    <name>HHS Digital Media Syndication</name>
+    <author>HHS</author>
+    <version>1.0.0</version>
+    <description>A module for selecting and inserting syndicated content.</description>
+    <files>
+        <filename>mod_content_synd.xml</filename>
+        <filename module="mod_content_synd">mod_content_synd.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+        <filename>models/fields/contentsyndpreview.php</filename>
+        <filename>models/fields/jstree.php</filename>
+        <filename>html/css/32px.png</filename>
+        <filename>html/css/40px.png</filename>
+        <filename>html/css/mod_content_synd.css</filename>
+        <filename>html/css/throbber.gif</filename>
+        <filename>html/css/treestyle.css</filename>
+        <filename>html/js/jquery.maskedinput.js</filename>
+        <filename>html/js/jquery-1.9.1.js</filename>
+        <filename>html/js/jstree.js</filename>
+        <filename>html/js/mod_content_synd.js</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/modules/mod_content_synd/models/fields">
+                <field
+                    name="cdccs_source"
+                    type="list"
+                    label="Source"
+                    description="Syndicate content from this source">
+                </field>
+                <field
+                    name="cdccs_sourceval"
+                    type="hidden"
+                    default="">
+                </field>
+                <field
+                    name="cdccs_fromdate"
+                    type="text"
+                    label="From Date"
+                    description="Only show titles of content modified since this date">
+                </field>
+                <field
+                    name="cdccs_mediatypes"
+                    type="list"
+                    multiple="true"
+                    label="Media Types"
+                    description="Select media types to filter titles">
+                </field>
+                <field
+                    name="cdccs_mediatypesval"
+                    type="hidden"
+                    default="">
+                </field>
+                <field
+                    name="cdccs_topictree"
+                    type="jstree"
+                    label="Topics"
+                    default=""
+                    description="Select topics to filter titles">
+                </field>
+                <field
+                    name="cdccs_title"
+                    type="list"
+                    label="Title"
+                    description="Select a title to preview the syndicated content">
+                </field>
+                <field
+                    name="cdccs_titleval"
+                    type="hidden"
+                    default="">
+                </field>
+                <field
+                    name="cdccs_preview"
+                    type="contentsyndpreview"
+                    label="Preview"
+                    default=""
+                    description="Preview content">
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field 
+                    name="cdccs_stripimages"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_stripimages" 
+                    type="checkbox" 
+                    label="Strip Images" 
+                    description="Strip images from returned content" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field 
+                    name="cdccs_stripscripts"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_stripscripts" 
+                    type="checkbox" 
+                    label="Strip Scripts" 
+                    description="Strip scripts from returned content" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field 
+                    name="cdccs_stripanchors"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_stripanchors" 
+                    type="checkbox" 
+                    label="Strip Anchors" 
+                    description="Strip anchors from returned content" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field 
+                    name="cdccs_stripcomments"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_stripcomments" 
+                    type="checkbox" 
+                    label="Strip Comments" 
+                    description="Strip comments from returned content" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field 
+                    name="cdccs_stripinlinestyles"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_stripinlinestyles" 
+                    type="checkbox" 
+                    label="Strip Inline Styles" 
+                    description="Strip inline styles from returned content" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field 
+                    name="cdccs_hidetitle"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_hidetitle" 
+                    type="checkbox" 
+                    label="Hide Title" 
+                    description="Hide title in syndicated content" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field 
+                    name="cdccs_hidedescription"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_hidedescription" 
+                    type="checkbox" 
+                    label="Hide Description" 
+                    description="Hide description in syndicated content" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field
+                    name="cdccs_encoding"
+                    type="list"
+                    default=""
+                    label="Encoding"
+                    description="Encoding for returned content">
+                    <option value="">Default</option>
+                    <option value="utf-8">UTF-8</option>
+                    <option value="iso-8859-1">iso-8859-1</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
