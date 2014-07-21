@@ -10,16 +10,9 @@ class modContentSyndHelper
    */    
   public static function getEmbedCode($params, $id) {
     // $params->get('preview');
-    $embed_code = 'function htmlDecode(value) {';
-    $embed_code .= 'if (value) {';
-    $embed_code .= 'return jQuery(\'<div />\').html(value).text();';
-    $embed_code .= '} else {';
-    $embed_code .= 'return "";';
-    $embed_code .= '}';
-    $embed_code .= '}';
-    $embed_code .= 'function mediaCallback_'.$id.'(response) {';
+    $embed_code = 'function mediaCallback_'.$id.'(response) {';
     $embed_code .= 'if (response && response.results) {';
-    $embed_code .= 'jQuery(\'#'.$id.'\').html(htmlDecode(response.results.content));';
+    $embed_code .= 'jQuery(\'#'.$id.'\').html(response.results.content);';
     if ($params->get('cdccs_hidetitle') == true) {
       $embed_code .= 'jQuery("span[id=\'cdc_title_' . $params->get('cdccs_titleval') . '\']").hide();';
     }
