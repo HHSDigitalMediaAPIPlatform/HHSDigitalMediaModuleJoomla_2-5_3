@@ -3,6 +3,7 @@
     <name>HHS Digital Media Syndication</name>
     <author>HHS</author>
     <version>1.0.0</version>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
     <description>A module for selecting and inserting syndicated content.</description>
     <files>
         <filename>mod_content_synd.xml</filename>
