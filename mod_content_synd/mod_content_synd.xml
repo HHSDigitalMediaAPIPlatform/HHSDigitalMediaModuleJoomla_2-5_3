@@ -23,6 +23,8 @@
         <filename>html/js/jquery-1.9.1.js</filename>
         <filename>html/js/jstree.js</filename>
         <filename>html/js/mod_content_synd.js</filename>
+        <filename>html/js/jquery-ui.js</filename>
+        <filename>html/css/jquery-ui.css</filename>
     </files>
     <config>
         <fields name="params">
@@ -39,9 +41,19 @@
                     default="">
                 </field>
                 <field
+                    name="cdccs_searchtype"
+                    type="radio"
+                    default="0"
+                    label="Select Search Type"
+                    description="Search by Metadata or by Url">
+                    <option value="0">Metadata</option>
+                    <option value="1">Url</option>
+                </field>
+                <field
                     name="cdccs_fromdate"
                     type="text"
                     label="From Date"
+                    class="meta_group"
                     description="Only show titles of content modified since this date">
                 </field>
                 <field
@@ -49,6 +61,7 @@
                     type="list"
                     multiple="true"
                     label="Media Types"
+                    class="meta_group"
                     description="Select media types to filter titles">
                 </field>
                 <field
@@ -61,16 +74,30 @@
                     type="jstree"
                     label="Topics"
                     default=""
+                    class="meta_group"
                     description="Select topics to filter titles">
                 </field>
                 <field
                     name="cdccs_title"
                     type="list"
                     label="Title"
+                    class="meta_group"
                     description="Select a title to preview the syndicated content">
                 </field>
                 <field
                     name="cdccs_titleval"
+                    type="hidden"
+                    default="">
+                </field>
+                <field
+                    name="cdccs_url"
+                    type="text"
+                    label="Url Contains"
+                    class="url_group"
+                    description="Search for content with urls containing this text">
+                </field>
+                <field
+                    name="cdccs_urlmediaidval"
                     type="hidden"
                     default="">
                 </field>
@@ -149,28 +176,87 @@
                     default="0">
                 </field>
                 <field 
-                    name="cdccs_hidetitle"
+                    name="cdccs_stripbreaks"
                     type="hidden"
                     value="0">
                 </field>
                 <field 
-                    name="cdccs_hidetitle" 
+                    name="cdccs_stripbreaks" 
                     type="checkbox" 
-                    label="Hide Title" 
-                    description="Hide title in syndicated content" 
+                    label="Strip Line Breaks" 
+                    description="Strip line breaks from returned content" 
                     value="1" 
                     default="0">
                 </field>
+                <field
+                    name="cdccs_imagefloat"
+                    type="list"
+                    default=""
+                    label="Image Float"
+                    description="Floats images left or right in some returned content">
+                    <option value="">Default</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                </field>
+                <field
+                    name="cdccs_cssclasses"
+                    type="text"
+                    label="CSS Classes (comma separated)"
+                    description="Comma separated list of CSS classes.  Only content within elements with these classes will be returned.">
+                </field>
+                <field
+                    name="cdccs_ids"
+                    type="text"
+                    label="Element Ids (comma separated)"
+                    description="Comma separated list of element Ids.  Only content within elements with these classes will be returned.">
+                </field>
+                <field
+                    name="cdccs_xpath"
+                    type="text"
+                    label="XPath"
+                    description="An xpath statement defining what should be retrieved from the content">
+                </field>
+                <field
+                    name="cdccs_namespace"
+                    type="text"
+                    label="Namespace Prefix"
+                    description="Used to decorate (prefix) the tags and ids in the results to prevent conflict with existing host page elements">
+                </field>
                 <field 
-                    name="cdccs_hidedescription"
+                    name="cdccs_linkssamewindow"
                     type="hidden"
                     value="0">
                 </field>
                 <field 
-                    name="cdccs_hidedescription" 
+                    name="cdccs_linkssamewindow" 
                     type="checkbox" 
-                    label="Hide Description" 
-                    description="Hide description in syndicated content" 
+                    label="Links Open Same Window" 
+                    description="Check to have links in content open the same window (default is new window)" 
+                    value="1" 
+                    default="0">
+                </field>
+                <field
+                    name="cdccs_width"
+                    type="text"
+                    label="Width"
+                    description="Set the width of various media types">
+                </field>
+                <field
+                    name="cdccs_height"
+                    type="text"
+                    label="Height"
+                    description="Set the height of various media types">
+                </field>
+                <field 
+                    name="cdccs_https"
+                    type="hidden"
+                    value="0">
+                </field>
+                <field 
+                    name="cdccs_https" 
+                    type="checkbox" 
+                    label="Use HTTPS" 
+                    description="If checked, the calls to the source to fetch the content for embedding will use https rather than http" 
                     value="1" 
                     default="0">
                 </field>

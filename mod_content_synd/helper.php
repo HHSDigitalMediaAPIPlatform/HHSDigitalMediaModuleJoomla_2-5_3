@@ -8,7 +8,7 @@
 class modContentSyndHelper
 {
   /**
-   * Retrieves the hello message
+   * Builds the embed code for syndication
    *
    * @param array $params An object containing the module parameters
    * @access public
@@ -18,12 +18,6 @@ class modContentSyndHelper
     $embed_code = 'function mediaCallback_'.$id.'(response) {';
     $embed_code .= 'if (response && response.results) {';
     $embed_code .= 'jQuery(\'#'.$id.'\').html(response.results.content);';
-    if ($params->get('cdccs_hidetitle') == true) {
-      $embed_code .= 'jQuery("span[id=\'cdc_title_' . $params->get('cdccs_titleval') . '\']").hide();';
-    }
-    if ($params->get('cdccs_hidedescription') == true) {
-      $embed_code .= 'jQuery("p[id=\'cdc_description_' . $params->get('cdccs_titleval') . '\']").hide();';
-    }
     $embed_code .= '}';
     $embed_code .= '}';
     $embed_code .= 'jQuery(document).ready(function() {';
