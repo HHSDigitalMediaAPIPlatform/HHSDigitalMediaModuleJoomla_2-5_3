@@ -1,5 +1,5 @@
 This module should be supported in both Joomla 2.x and 3.x
-It was tested in versions 2.5.19 and 3.2.3.
+It was tested in versions 2.5.19 and 3.3.6.
 
 Installation should be a basic extension installation, no configuration or setup is necessary.
 Once installed you should see a new module type called 'Content Syndication'.  
