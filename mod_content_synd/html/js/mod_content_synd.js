@@ -646,14 +646,17 @@ var CDCContentSynd = function() {
   var handleSearchTypeChange = function() {
       var mediaIdToLoad = '';
       if (isUrlSearchType()) {
-        //TODO: Need to make this toggle work w/ 3.0 markup, parent('div.controls').parent('div.control-group').show/hide
-        jQuery('.meta_group').parent('li').hide();
-        jQuery('.url_group').parent('li').show();
+        jQuery('.meta_group').parent('li').hide(); //2.5
+        jQuery('.meta_group').parent('div.controls').parent('div.control-group').hide(); //3
+        jQuery('.url_group').parent('li').show(); //2.5
+        jQuery('.url_group').parent('div.controls').parent('div.control-group').show(); //3
         mediaIdToLoad = jQuery('input[id$="cdccs_urlmediaidval"]').val();
       }
       else {
         jQuery('.meta_group').parent('li').show();
+        jQuery('.meta_group').parent('div.controls').parent('div.control-group').show(); //3
         jQuery('.url_group').parent('li').hide();
+        jQuery('.url_group').parent('div.controls').parent('div.control-group').hide(); //3
         mediaIdToLoad = jQuery('input[id$="cdccs_titleval"]').val();
       }
       if (mediaIdToLoad != '') {
