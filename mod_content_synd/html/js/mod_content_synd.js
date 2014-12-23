@@ -73,7 +73,7 @@ var CDCContentSynd = function() {
     // To kick off loading of all fields based on previous saved settings.
     handleSourceChange();
     initUrlSearchField();
-      handleSearchTypeChange();
+    handleSearchTypeChange();
   };
 
   var topicsCallback = function (response) {
@@ -271,14 +271,14 @@ var CDCContentSynd = function() {
   };
 
   var handleTitleChange = function () {
-    previewMediaId = jQuery('select[id$="cdccs_title"] option:selected').val();
-    jQuery('input[id$="cdccs_titleval"]').val(previewMediaId);
-    if (previewMediaId === "") {
+    var mediaId = jQuery('select[id$="cdccs_title"] option:selected').val();
+    jQuery('input[id$="cdccs_titleval"]').val(mediaId);
+    if (mediaId === "") {
       clearPreview();
       return;
     }
     if (isMetadataSearchType()) {
-      loadPreviewForMediaId(previewMediaId);
+      loadPreviewForMediaId(mediaId);
     }
   };
 
@@ -582,12 +582,12 @@ var CDCContentSynd = function() {
   var handleUrlSelect = function(event, ui) {
     event.preventDefault();
     var urlField = jQuery('input[id$="cdccs_url"]');
-    previewMediaId = ui.item.value;
+    var mediaId = ui.item.value;
     urlField.val(ui.item.label);
 
-    if (previewMediaId !== '') {
-      loadPreviewForMediaId(previewMediaId);
-      jQuery('input[id$="cdccs_urlmediaidval"]').val(previewMediaId);
+    if (mediaId !== '') {
+      loadPreviewForMediaId(mediaId);
+      jQuery('input[id$="cdccs_urlmediaidval"]').val(mediaId);
     }
     return false;
   };
@@ -598,6 +598,7 @@ var CDCContentSynd = function() {
 
   var loadPreviewForMediaId = function(mediaId) {
     loadingPreview(true);
+    previewMediaId = mediaId;
     var mediaUrl = selectedSourceData.mediaUrl;
     if (jQuery('input[id$="cdccs_https"]').prop('checked')) {
       mediaUrl = selectedSourceData.mediaUrlHttps;
